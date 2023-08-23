@@ -10,15 +10,15 @@ const Pedido = ({producto}) => {
 
     return (
 
-        <div className="shadow p-5 mb-3 flex gap-10 items-center">
+        <div className="shadow p-5 mb-3 flex flex-col md:flex-row gap-10 items-center">
             <div className="md:w-1/6">
                 <Image width={300} height={400} alt={nombre} src={`/assets/img/${imagen}.jpg`} />
             </div>
 
             <div className="md:w-4/6">
-                <p className="text-3xl font-bold">{nombre}</p>
-                <p className="text-xl font-bold mt-2">Cantidad: {cantidad}</p>
-                <p className="text-xl font-bold mt-2 text-amber-500">Precio: {formatearDinero(precio)}</p>
+                <p className="text-3xl font-bold tituloCafe">{nombre}</p>
+                <p className="text-xl font-bold mt-2 ">Cantidad: {cantidad}</p>
+                <p className="text-xl font-bold mt-2 subtituloCafe">Precio: {formatearDinero(precio)}</p>
                 <p className="text-sm text-gray-700 mt-2">Subtotal: {formatearDinero((precio * cantidad))}</p>
 
             </div>

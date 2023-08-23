@@ -6,7 +6,9 @@ const Categoria = ({categoria}) => {
     const { nombre, icono, id } = categoria;
 
     return (
-        <div className={`flex items-center gap-4 w-full p-5  menu ${ categoriaActual?.id === id ? "menuGris" : ""}`  }> 
+        <div className={`flex items-center gap-4 w-full p-5 cursor-pointer menu ${ categoriaActual?.id === id ? "menuGris" : ""}`  }  
+            onClick={ () => handleClickCategoria(id)}
+        >    
             <Image width={70} height={70} src={`/assets/img/icono_${icono}.svg`} alt="texto alternativo"
                 
             />

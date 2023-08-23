@@ -7,7 +7,7 @@ const Producto = ({producto}) => {
 
     const { handleSetProducto, handleModal, categoriaActual} = useQuiosco();
     const { nombre, imagen, precio, id } = producto;
-    console.log(categoriaActual.id);
+    
     return (
         <div className={`border rounded-lg ${categoriaActual?.id !== 4 ? "card3" : "cardDonas"} `} >
             <Image src={`/assets/img/${imagen}.jpg`} 

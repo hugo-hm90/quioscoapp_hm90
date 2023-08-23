@@ -5,7 +5,7 @@ import { formatearDinero } from "../helpers";
 
 const ModalProducto = () => {
 
-    const { producto, handleModal, handleAgregarPedido, pedido } = useQuiosco(); 
+    const { producto, handleModal, handleAgregarPedido, pedido, categoriaActual } = useQuiosco(); 
     const { nombre, imagen, precio } = producto;
 
     const [cantidad, setCantidad] = useState(1);
@@ -29,7 +29,8 @@ const ModalProducto = () => {
 
             <div className="md:w-1/3">
                 <Image src={`/assets/img/${imagen}.jpg`} 
-                    width={300} height={400} alt={`imagen ${nombre}`} 
+                    width={300} height={400} alt={`imagen ${nombre}`}
+                    className="rounded-lg" 
                 />
             </div>
 
@@ -44,10 +45,18 @@ const ModalProducto = () => {
                     </button>
                 </div>
 
-                <h1 className="text-3xl font-bold mt-5">
+                <h1 className={`text-3xl font-bold mt-5 
+                        ${categoriaActual?.id === 1 || categoriaActual?.id === 2 || categoriaActual?.id === 5 || categoriaActual?.id === 6 ? "tituloCafe" : ""}
+                        ${categoriaActual?.id === 3 ? "tituloPizza" : ""}
+                        ${categoriaActual?.id === 4 ? "tituloDonas" : ""}
+                    `}>
                     {nombre}
                 </h1>
-                <p className="mt-5 font-black text-5xl text-amber-500">
+                <p className={`mt-5 font-black text-5xl first-letter:
+                        ${categoriaActual?.id === 1 || categoriaActual?.id === 2 || categoriaActual?.id === 5 || categoriaActual?.id === 6 ? "subtituloCafe"  : "" }
+                        ${categoriaActual?.id === 3 ? "subtituloPizza" : ""}
+                        ${categoriaActual?.id === 4 ? "subtituloDonas" : ""}
+                    `}>
                     {formatearDinero(precio)}
                 </p>
 
@@ -73,7 +82,11 @@ const ModalProducto = () => {
 
                     </button>
 
-                    <button type="button" className="button slide px-5 py-2 text-white font-bold rounded"
+                    <button type="button" className={`button px-5 py-2 text-white font-bold rounded 
+                        ${categoriaActual?.id === 1 || categoriaActual?.id === 2 || categoriaActual?.id === 5 || categoriaActual?.id === 6 ? "pulse" : ""}
+                        ${categoriaActual?.id === 3 ? "raisePizza" : ""}
+                        ${categoriaActual?.id === 4 ? "upDonas" : ""}
+                    `}
                         onClick={() => {
                             handleAgregarPedido({...producto, cantidad})
                         }}
